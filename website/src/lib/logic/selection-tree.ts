@@ -22,6 +22,23 @@ export class SelectionTreeType {
         this.size = 0;
     }
 
+    clearFrom(level: ListLevel) {
+      if (this.item.level >= level) {
+        this.clear();
+      } else {
+        for (let key in this.children) {
+          this.children[key].clearFrom(level);
+        }
+        this.size = 0;
+        if (this.selected) {
+          this.size = 1;
+        }
+        for (let key in this.children) {
+          this.size += this.children[key].size;
+        }
+      }
+    }
+
     _setOrToggle(item: ListItem, value?: boolean) {
         if (item.level === this.item.level) {
             let newSelected = value === undefined ? !this.selected : value;

@@ -31,7 +31,7 @@ test('selectItem, with a ListWaypointItem, selects that item', () => {
     expect(get(selection).has(item)).toBe(true);
 });
 
-test.fails('selectItem, with a ListWaypointItem, when there is an existing selected file, maintains the file selection', () => {
+test('selectItem, with a ListWaypointItem, when there is an existing selected file, maintains the file selection', () => {
     selection.selectFile('file-1');
 
     const item = new ListWaypointItem('file-1', 42);
