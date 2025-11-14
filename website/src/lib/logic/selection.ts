@@ -39,7 +39,7 @@ export class Selection {
 
     selectItem(item: ListItem) {
         this._selection.update(($selection) => {
-            $selection.clear();
+            $selection.clearFrom(item.level);
             $selection.set(item, true);
             return $selection;
         });
